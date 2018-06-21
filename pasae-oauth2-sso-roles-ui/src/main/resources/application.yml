@@ -2,6 +2,8 @@ auth-server: http://localhost:8081/authserver
 resource-server: http://localhost:8082/
 server:
   port: 8080
+  servlet:
+    context-path: /ui
 security:
   basic:
     enabled: false

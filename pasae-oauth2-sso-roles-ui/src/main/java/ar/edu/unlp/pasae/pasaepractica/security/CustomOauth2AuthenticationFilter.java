@@ -21,13 +21,12 @@ public class CustomOauth2AuthenticationFilter extends GenericFilterBean {
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
 			throws IOException, ServletException {
 
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		if (authentication != null && authentication instanceof OAuth2Authentication) {
-			OAuth2Authentication oAuth2Authentication = (OAuth2Authentication) authentication;
-			OAuth2AuthenticationDetails details = (OAuth2AuthenticationDetails) oAuth2Authentication.getDetails();
-			HttpServletResponse response = (HttpServletResponse) res;
+			final OAuth2Authentication oAuth2Authentication = (OAuth2Authentication) authentication;
+			final OAuth2AuthenticationDetails details = (OAuth2AuthenticationDetails) oAuth2Authentication.getDetails();
+			final HttpServletResponse response = (HttpServletResponse) res;
 			response.addCookie(new Cookie("access_token", details.getTokenValue()));
-			response.addCookie(new Cookie("JSESSIONID", ""));
 		}
 
 		chain.doFilter(req, res);

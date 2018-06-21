@@ -1,0 +1,2 @@
+rootProject.name = 'pasae-oauth2-sso-roles'
+include 'pasae-oauth2-sso-roles-ui', 'pasae-oauth2-sso-roles-resource' , 'pasae-oauth2-sso-roles-authorization'

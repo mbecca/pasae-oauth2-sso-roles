@@ -10,4 +10,10 @@ public interface UserService {
 
 	Collection<UserDTO> getAllUsers();
 
+	Collection<UserDTO> list();
+
+	Collection<UserDTO> listForAdmin();
+
+	Collection<UserDTO> listForStudent();
+
 }

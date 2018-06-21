@@ -22,17 +22,22 @@ public class UserServiceImpl implements UserService {
 	private IFactoryDTO factoryDTO;
 
 	@Override
-	public Collection<UserDTO> getAllUsers() {
-		List<User> users = getUserRepository().findAll();
-		return getFactoryDTO().convertToDTOUser(users);
+	public Collection<String> getAllUsernames() {
+		return getUserRepository().getAllUsernames();
 	}
 
-	private UserRepository getUserRepository() {
-		return userRepository;
+	@Override
+	public Collection<UserDTO> getAllUsers() {
+		final List<User> users = getUserRepository().findAll();
+		return getFactoryDTO().convertToDTOUser(users);
 	}
 
 	private IFactoryDTO getFactoryDTO() {
 		return factoryDTO;
+	}
+
+	private UserRepository getUserRepository() {
+		return userRepository;
 	}
 
 }

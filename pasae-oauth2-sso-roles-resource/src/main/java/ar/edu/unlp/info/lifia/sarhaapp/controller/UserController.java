@@ -5,10 +5,12 @@ import java.util.Collection;
 import javax.annotation.security.RolesAllowed;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import ar.edu.unlp.info.lifia.sarhaapp.annotations.IsStudent;
 import ar.edu.unlp.info.lifia.sarhaapp.dto.UserDTO;
 import ar.edu.unlp.info.lifia.sarhaapp.service.UserService;
 
@@ -29,15 +31,15 @@ public class UserController {
 		return getUserService().getAllUsers();
 	}
 
-	@RolesAllowed("ROLE_ADMIN")
-	@GetMapping(value = "listByAdmin")
-	public Collection<UserDTO> listByAdmin() {
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@GetMapping(value = "listForAdmin")
+	public Collection<UserDTO> listForAdmin() {
 		return getUserService().getAllUsers();
 	}
 
-	@RolesAllowed("ROLE_GUEST")
-	@GetMapping(value = "listByGuest")
-	public Collection<UserDTO> listByGuest() {
+	@IsStudent
+	@GetMapping(value = "listForStudent")
+	public Collection<UserDTO> listForStudent() {
 		return getUserService().getAllUsers();
 	}
 

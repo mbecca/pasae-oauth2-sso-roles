@@ -35,17 +35,17 @@ public class UserController {
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	@GetMapping(value = "listByAdmin")
+	@GetMapping(value = "listForAdmin")
 	public Collection<UserDTO> listAdmin() {
-		final ResponseEntity<Collection> forEntity = getRestTemplate().getForEntity(userURL + "/listByAdmin",
+		final ResponseEntity<Collection> forEntity = getRestTemplate().getForEntity(userURL + "/listForAdmin",
 				Collection.class);
 		return forEntity.getBody();
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	@GetMapping(value = "listByGuest")
-	public Collection<UserDTO> listByGuest() {
-		final ResponseEntity<Collection> forEntity = getRestTemplate().getForEntity(userURL + "/listByGuest",
+	@GetMapping(value = "listForStudent")
+	public Collection<UserDTO> listForStudent() {
+		final ResponseEntity<Collection> forEntity = getRestTemplate().getForEntity(userURL + "/listForStudent",
 				Collection.class);
 		return forEntity.getBody();
 	}

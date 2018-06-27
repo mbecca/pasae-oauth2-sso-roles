@@ -30,6 +30,8 @@ ext {
 	springCloudVersion = 'Finchley.BUILD-SNAPSHOT'
 }
 
+sourceSets.main.java.srcDir 'src/main/webapp'
+
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 	compile('org.springframework.boot:spring-boot-starter-web')
